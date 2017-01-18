@@ -17,12 +17,32 @@ public void setup()
 public boolean palindrome(String word)
 {
   //your code here
+
+  //no Space
+  String sNew = new String();
   for(int i =0; i<word.length(); i++)
   {
-    if(word.substring(i, i+1).equals(" "))
-      word = word.substring(0, i) + word.substring(i+1);
+    if(!(word.substring(i, i+1).equals(" ")))
+      sNew = sNew + word.substring(i,i+1);
   }
 
+  //delete non-letter chars
+  String sNew2 = new String();
+  for(int i =0; i < word.length(); i++)
+  {
+    if(Character.isLetter(word.charAt(i)) == true)
+      {
+        sNew2 = sNew2 + word.substring(i, i+1);
+      }
+  }
+
+  String sNew3 = new String();
+  sNew3 = sNew2.toLowerCase();
+
+  if(sNew3.equals(reverse(sNew3)))
+  {
+    return true;
+  }
   return false;
 }
 public String reverse(String str)
